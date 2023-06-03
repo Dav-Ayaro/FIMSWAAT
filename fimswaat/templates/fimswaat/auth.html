@@ -1,0 +1,13 @@
+{% extends 'fimswaat/layout.html'%}
+
+{% block body %}
+
+<h1> Login </h1>
+<form action="" method="post">
+    <input type="email" placeholder="info@fimswaat.com">
+    <input type="password" placeholder="********">
+    <input type="submit" value="Login">
+</form>
+
+<a href="{% url 'user_dash_view' %}">dashboard</a>
+{% endblock %}

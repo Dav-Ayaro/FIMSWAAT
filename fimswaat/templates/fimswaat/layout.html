@@ -7,14 +7,8 @@
     <title>FIMSWAAT</title>
 </head>
 <body>
-    <h1> welcome Bune boy</h1>
+    {% block body %}
 
-    <a href="{% url 'login_view' %}">Login</a>
-
-        <form action="" method="post">
-            {% csrf_token %}
-            {{Form.as_div}}
-            <input type="submit" value="Register">
-        </form>
+    {% endblock %}
 </body>
 </html>

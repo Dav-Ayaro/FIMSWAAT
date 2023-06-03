@@ -14,3 +14,12 @@ def admin_dash(request):
     return render(request, 'fimswaat/index.html',{
         'Form':RegistrationForm()
     })
+
+def login_view(request):
+    return render(request, 'fimswaat/auth.html')
+
+def user_dash_view(request):
+    return render(request, 'fimswaat/user_dash.html')
+
+def logout_view(request):
+    pass
