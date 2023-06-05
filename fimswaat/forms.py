@@ -2,12 +2,14 @@ from django import forms
 
 
 class RegistrationForm(forms.Form):
-    username = forms.CharField(widget=forms.TextInput({'placeholder':'username', 'autocomplete':'off'}))
+    fullName = forms.CharField(widget=forms.TextInput({'placeholder':'Full Name', 'autocomplete':'off'}))
     email = forms.EmailField(widget=forms.EmailInput({'placeholder':'email', 'autocomplte':'off'}))
-    passwd1 = forms.CharField(widget=forms.PasswordInput({'placeholder':'********', 'autocomplete':'off'}))
-    passwd2 = forms.CharField(widget=forms.PasswordInput({'placeholder':'********', 'autocomplete':'off'}))
+    department = forms.CharField(widget=forms.TextInput({'placeholder':'Department', 'autocomplete':'off'}))
+    empId = forms.IntegerField(widget=forms.NumberInput({'placeholder':'EmployeeId', 'autocomplete':'off'}))
+    officeName = forms.CharField(widget=forms.TextInput({'placeholder':'Office Name', 'autocomplete':'off'}))
+    officeCode = forms.IntegerField(widget=forms.NumberInput({'placeholder':'Office Code', 'autocomplete':'off'}))
 
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(widget=forms.EmailInput({'placeholder':'email', 'autocomplte':'off'}))
+    username = forms.CharField(widget=forms.TextInput({'placeholder':'username', 'autocomplte':'off'}))
     passcode = forms.CharField(widget=forms.PasswordInput({'placeholder':'********', 'autocomplete':'off'}))

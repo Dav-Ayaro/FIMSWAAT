@@ -2,12 +2,20 @@
 
 {% block body %}
 
-<h1> Login </h1>
-<form action="" method="post">
-    <input type="email" placeholder="info@fimswaat.com">
-    <input type="password" placeholder="********">
-    <input type="submit" value="Login">
-</form>
+<h1> Login page </h1>
 
-<a href="{% url 'user_dash_view' %}">dashboard</a>
+<form action="{% url 'index_view' %}" method="post">
+    {% csrf_token %}
+    {{login_info.as_p}}
+    <input type="submit" value="submit">
+</form>
+{% if wrong_login %}
+    {{wrong_login}}
+{% endif %}
+{% if invalid_data %}
+    {{invalid_data}}
+{% endif %}
+
+
+<a href="{% url 'index_view' %}">Home</a>
 {% endblock %}
