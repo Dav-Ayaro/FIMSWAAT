@@ -11,5 +11,5 @@ class RegistrationForm(forms.Form):
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(widget=forms.TextInput({'placeholder':'username', 'autocomplte':'off'}))
+    email = forms.EmailField(widget=forms.EmailInput({'placeholder':'email', 'autocomplte':'off'}))
     passcode = forms.CharField(widget=forms.PasswordInput({'placeholder':'********', 'autocomplete':'off'}))

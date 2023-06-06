@@ -4,7 +4,7 @@ from . models import *
 # Register your models here.
 
 class UserAccountsView(admin.ModelAdmin):
-    list_display = ['user_id', 'is_staff', 'is_superuser','email']
+    list_display = ['password', 'is_staff', 'is_superuser','email']
 
 class RegistrationView(admin.ModelAdmin):
     list_display = ['fullName','department','empId','officeName','officeCode']
