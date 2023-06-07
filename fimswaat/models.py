@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, AbstractBaseUser
 import uuid
 # from django.contrib.auth.backends import ModelBackend
 # from django.contrib.auth import get_user_model
@@ -7,26 +7,11 @@ import uuid
 
 
 department = [
-    'department_of_a',
-    'department_of_b',
-    'department_of_c',
-    'department_of_d',
+    'department_of_ICT',
+    'department_of_Business_And_Accounting',
+    'department_of_Public_Administration_And_Management',
+    'department_of_Law_Social_Science',
 ]
-
-
-# class EmailBackend(ModelBackend):
-#     def authenticate(self, request, email=None, password=None, **kwargs):
-#         UserModel = get_user_model()
-#         try:
-#             user = UserModel.objects.get(email=email)
-#         except UserModel.DoesNotExist:
-#             return None
-#         else:
-#             if user.check_password(password):
-#                 return user
-#         return None
-
-
 
 
 class UserAccounts(AbstractUser):
