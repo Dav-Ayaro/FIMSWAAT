@@ -1,6 +1,24 @@
 {% extends 'fimswaat/staff_layout.html' %}
 
 {% block body %}
-<h1>welcome {{request.user.username}}</h1>
-<a href="{% url 'logout_view' %}">logout</a>
+<div class="main_staff">
+    <div class="welcome_message"><h3>welcome {{request.user.username}}</h3> <a href="">changepassword</a></div>
+        <div class="department_in">
+            <h2>List Of Deartment</h2>
+            <ul>
+                {% for group in get_group %}
+                <div class="enroll"><li>{{group.name}}</li><a href="{% url 'enrollment_view' group.id %}">enroll</a></div>
+                {% empty %}
+                <li>Group Not Found</li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    {% if success %}
+        <div> enrolled to department{{get_department_name}}</div>
+
+
+{% endif %}
+
+</div>
 {% endblock %}

@@ -1,24 +1,26 @@
 {% extends 'fimswaat/layout.html' %}
 {% block body %}
+<div class="main_index">
+    <div class="Signup_form">
+        <div class="signup_title"><h1>Signup</h1></div>
+            <div class="form_continer">
+                <form action="{% url 'index_view'%}" method="post">
+                    {% csrf_token%}
+                    {{capture_form_data.as_p}}
+                    <div class="center_submit"><input type="submit" value="submit"></div>
+                </form>
+            </div>
 
-<h1>Signup</h1>
-<form action="{% url 'index_view'%}" method="post">
-    {% csrf_token%}
-    {{capture_form_data.as_p}}
-    <input type="submit" value="submit">
-</form>
+            {% if internal_server_error %}
+                <div class="">Internal server error</div>
+            {% endif %}
+            {% if data_exist %}
+                {{data_exist}}
+            {% endif %}
 
-<a href="{% url 'login_view' %}">Login</a>
-{% if internal_server_error %}
-    <div class="">Internal server error</div>
-{% endif %}
-{% if data_exist %}
-    {{data_exist}}
-{% endif %}
-
-{% if success %}
-    <div class="">added succssfulllly </div>
-{% endif %}
-
-
+            {% if success %}
+                <div class="">added succssfulllly </div>
+            {% endif %}
+    </div>
+</div>
 {% endblock %}

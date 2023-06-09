@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,10 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STAFF||FIMSWAAT</title>
+    <link rel="stylesheet" href="{% static 'fimswaat/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'fimswaat/fa/css/all.min.css' %}">
 </head>
 <body>
+    <div class="main_class">
+        <div class="child1_class">
+            <div class="header_title"> FIXED INVENTORY MANAGEMENT SUSTEM WITH ANALYTICS AND TRACKING </div>
+            <div class="header_title">
+                <a href="{% url 'logout_view' %}"><i class="fa fa-sign-out"></i> signout</a>
+            </div>
+        </div>
     {% block body %}
 
     {% endblock %}
+
+    <div class="main_footer">
+        <div class="footer">
+            <div class="footer_content"> &copy; All Right reserverd {{year}}</div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

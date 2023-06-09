@@ -1,18 +1,24 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, AbstractBaseUser
 import uuid
-# from django.contrib.auth.backends import ModelBackend
-# from django.contrib.auth import get_user_model
-# Create your models here.
+from django.contrib.auth.models import Group
 
 
 department = [
     'department_of_ICT',
-    'department_of_Business_And_Accounting',
-    'department_of_Public_Administration_And_Management',
-    'department_of_Law_Social_Science',
+    'department_of_Business_and_Accounting',
+    'department_of_Public_Administration_And_Management'
+    'department_of_Law_Social_Science'
 ]
 
+
+
+
+class Department(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
 
 class UserAccounts(AbstractUser):
     email = models.EmailField(unique=True)
@@ -25,4 +31,3 @@ class Registration(models.Model):
     empId = models.IntegerField()
     officeName = models.CharField(max_length=255)
     officeCode = models.CharField(max_length=10)
-

@@ -1,21 +1,24 @@
 {% extends 'fimswaat/layout.html'%}
 
 {% block body %}
+<div class="main_index">
+    <div class="signup_title"><h1>Login</h1></div>
+    <div class="Signup_form">
+    <div class="form_continer">
+        <form action="{% url 'login_view'%}" method="post">
+            {% csrf_token %}
+            {{login_info.as_p}}
+            <div class="center_submit"><input type="submit" value="submit"></div>
+        </form>
+    </div>
 
-<h1> Login page </h1>
+    {% if wrong_login %}
+        {{wrong_login}}
+    {% endif %}
+    {% if invalid_data %}
+        {{invalid_data}}
+    {% endif %}
 
-<form action="{% url 'login_view' %}" method="post">
-    {% csrf_token %}
-    {{login_info.as_p}}
-    <input type="submit" value="submit">
-</form>
-{% if wrong_login %}
-    {{wrong_login}}
-{% endif %}
-{% if invalid_data %}
-    {{invalid_data}}
-{% endif %}
-
-
-<a href="{% url 'index_view' %}">Home</a>
+</div>
+</div>
 {% endblock %}
