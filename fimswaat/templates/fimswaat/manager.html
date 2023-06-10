@@ -2,7 +2,7 @@
 
 {% block body %}
 <div class="main_staff">
-    <div class="welcome_message"><h3>welcome {{obtained_user.fullName}}</h3> <a href="{% url 'manager_settings_view' %}">changepassword</a></div>
+    <div class="welcome_message"><h3>welcome {{obtained_user.fullName.capitalize}}</h3> <a href="{% url 'manager_settings_view' %}"><i class="fa fa-user-cog"></i></a></div>
         <div class="department_in">
             <h2>List Of Deartment</h2>
             <ul>

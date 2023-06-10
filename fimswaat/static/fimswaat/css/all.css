@@ -62,6 +62,7 @@ div.main_index {
   display: flex;
   align-items: center;
   flex-direction: column;
+  background: #f3f3f3;
 }
 div.main_index div.signup_title {
   color: rgba(35, 35, 37, 0.8235294118);
@@ -119,6 +120,11 @@ div.main_index div.Signup_form div.form_continer form div.center_submit {
 div.main_staff {
   height: 80vh;
   width: 100%;
+  background: #f3f3f3;
+  display: flexbox;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
 }
 div.main_staff div.welcome_message {
   font-size: medium;
@@ -133,7 +139,7 @@ div.main_staff div.welcome_message a {
   font-weight: 900;
   font-size: medium;
   background: rgba(35, 35, 37, 0.8235294118);
-  width: 15%;
+  width: 3%;
   padding: 15px;
   border-radius: 10px;
   text-align: center;

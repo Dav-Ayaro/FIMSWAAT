@@ -175,7 +175,6 @@ def manager_view(request):
     get_group = object.get_all_groups().all()
     year = object.Time()
     obtained_user = object.get_group_users(request)
-    print(obtained_user)
 
     return object.render_view(request, view_file='fimswaat/manager.html',all_depart=all_depart,get_group=get_group,year=year,obtained_user=obtained_user)
 

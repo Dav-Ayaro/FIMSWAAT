@@ -61,6 +61,7 @@ div.main_index{
     display: flex;
     align-items: center;
     flex-direction: column;
+    background: #f3f3f3;
     div.signup_title{
         color: #232325d2;
         padding: 10px;
@@ -115,6 +116,11 @@ div.main_index{
 div.main_staff{
     height: 80vh;
     width: 100%;
+    background: #f3f3f3;
+    display: flexbox;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
     div.welcome_message{
         font-size: medium;
         color: #232325d2;
@@ -127,7 +133,7 @@ div.main_staff{
             font-weight: 900;
             font-size: medium;
             background: #232325d2;
-            width: 15%;
+            width: 3%;
             padding: 15px;
             border-radius: 10px;
             text-align: center;
