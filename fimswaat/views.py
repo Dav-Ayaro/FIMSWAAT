@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django .http import HttpResponseRedirect
-from . forms import RegistrationForm, LoginForm
+from . forms import RegistrationForm, LoginForm, ChangePassword
 from . models import Department, UserAccounts,Registration
 from django.contrib.admin.views.decorators import staff_member_required
 from django.utils import timezone
@@ -14,6 +14,9 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse, reverse_lazy
 from urllib.parse import urlencode
 from django.contrib.auth.hashers import make_password
+from django.db.models import Q
+import re
+
 # Create your views here.
 
 User = get_user_model()
@@ -59,9 +62,20 @@ class RenderUrls(SystemRequirements):
         return depart
     
     def get_logged_in_user(self, request):
-        get_user = (request.user.id)
+        get_user = (request.user)
         return get_user
     
+    def get_all_users(request):
+        query = Q(is_superuser=False) & Q(is_staff=False)
+        all_users = UserAccounts.objects.filter(query).values()
+        return all_users
+
+    def get_group_users(self, request):
+        user = (request.user)
+        get_user = Registration.objects.get(user=user)
+        return get_user
+
+
     def get_all_groups(request):
         all_groups = Group.objects
         return all_groups
@@ -120,6 +134,7 @@ def index_view(request):
 
 def login_view(request):
     year = object.Time()
+    get_user = object.get_all_users().all()
     if request.user.is_authenticated:
         return object.redirection_func(redirect_path=object.anonymousUser(request))
     
@@ -143,7 +158,7 @@ def login_view(request):
             else:
                 return object.render_view(request,view_file='fimswaat/auth.html', login_info=login_data, wrong_login='wrong_login')
         return object.render_view(request, view_file='fimswaat/auth.html', invalid_data='invalid_data',login_info=login_data)
-    return object.render_view(request, view_file='fimswaat/auth.html',login_info=LoginForm(),year=year)
+    return object.render_view(request, view_file='fimswaat/auth.html',login_info=LoginForm(),year=year,get_user=get_user)
 
 @staff_member_required(login_url=reverse_lazy('login_view'))
 def admin_view(request):
@@ -159,12 +174,13 @@ def manager_view(request):
     all_depart = object.get_all_department().all()
     get_group = object.get_all_groups().all()
     year = object.Time()
+    obtained_user = object.get_group_users(request)
+    print(obtained_user)
 
-    return object.render_view(request, view_file='fimswaat/manager.html',all_depart=all_depart,get_group=get_group,year=year)
-    
+    return object.render_view(request, view_file='fimswaat/manager.html',all_depart=all_depart,get_group=get_group,year=year,obtained_user=obtained_user)
 
 @login_required(login_url=reverse_lazy('login_view'))
-def enrollment_v(request, group_id):
+def enrollment_view(request, group_id):
     if request.user.is_superuser:
         return object.redirection_func(redirect_path=object.not_staff(request))
     
@@ -181,6 +197,39 @@ def enrollment_v(request, group_id):
         return object.render_view(request, view_file='fimswaat/manager.html', enrollment_error=True)
 
 
+@login_required(login_url=reverse_lazy('login_view'))
+def manager_settings_view(request):
+    if request.user.is_superuser:
+        return object.redirection_func(redirect_path=object.not_staff)
+    
+    get_user = object.get_logged_in_user(request)
+    print(get_user)
+    year = object.Time()
+    if request.method == 'POST':
+        change_passcode = ChangePassword(request.POST) if request.method == 'POST' else None
+
+        if change_passcode and change_passcode.is_valid():
+            pwd = change_passcode.cleaned_data['pwd']
+            pwd_rpt = change_passcode.cleaned_data['pwd_rpt']
+
+            if pwd and pwd_rpt and pwd == pwd_rpt:
+                get_user.set_password(pwd)
+                get_user.save()
+                return object.redirection_func(redirect_path='changed_view')
+            else:
+                return object.render_view(request, view_file='fimswaat/member_settings.html', ChangePassword=ChangePassword(), password_do_not_match=True,get_user=get_user)
+        else:
+            return object.render_view(request, view_file='fimswaat/member_settings.html', ChangePassword=ChangePassword(), error=True,get_user=get_user)
+        
+    return object.render_view(request, view_file='fimswaat/member_settings.html', ChangePassword=ChangePassword(),year=year)
+
+
+def changed_view(request):
+    if request.user.is_superuser:
+        return object.redirection_func(redirect_path=object.not_staff)
+    year = object.Time()
+    
+    return object.render_view(request, view_file='fimswaat/change_success.html',year=year)
 
 def logout_view(request):
     logout(request)

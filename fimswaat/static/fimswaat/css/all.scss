@@ -5,6 +5,7 @@
 }
 body{
     height: 100vh;
+    // overflow: hidden;
 }
 div.main_class{
     width: 100%;
@@ -13,6 +14,7 @@ div.main_class{
         display: flex;
         background: rgb(94, 59, 59);
         justify-content: space-between;
+        align-items: center;
         height: 10vh;
         top: 0;
         position: sticky;
@@ -42,6 +44,7 @@ div.main_class{
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: 999;
         div.footer{
             position: relative;
             bottom: -10;
@@ -68,6 +71,10 @@ div.main_index{
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        div.wrong_login{
+            color: red;
+            font-weight: bold;
+        }
         div.form_continer{
             width: 50%;
             form{
@@ -117,14 +124,19 @@ div.main_staff{
         a{
             text-decoration: none;
             color: #fff;
-            font-size: large;
+            font-weight: 900;
+            font-size: medium;
             background: #232325d2;
             width: 15%;
-            padding: 10px;
+            padding: 15px;
             border-radius: 10px;
+            text-align: center;
         }
     }
     div.department_in{
+        h2{
+            padding: 10px;
+        }
         ul{
             li{
                 list-style: none;
@@ -141,4 +153,13 @@ div.main_staff{
             }
         }
     }
+}
+div.content_mid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: darkgreen;
+    font-size: larger;
+    column-rule: #232325d2;
+    height: 80vh;
 }

@@ -7,7 +7,7 @@
                 <form action="{% url 'index_view'%}" method="post">
                     {% csrf_token%}
                     {{capture_form_data.as_p}}
-                    <div class="center_submit"><input type="submit" value="submit"></div>
+                    <div class="center_submit"><input type="submit" value="submit" id="myButton"></div>
                 </form>
             </div>
 

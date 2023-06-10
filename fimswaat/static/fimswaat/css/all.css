@@ -16,6 +16,7 @@ div.main_class div.child1_class {
   display: flex;
   background: rgb(94, 59, 59);
   justify-content: space-between;
+  align-items: center;
   height: 10vh;
   top: 0;
   position: sticky;
@@ -44,6 +45,7 @@ div.main_class div.main_footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
 }
 div.main_class div.main_footer div.footer {
   position: relative;
@@ -71,6 +73,10 @@ div.main_index div.Signup_form {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+div.main_index div.Signup_form div.wrong_login {
+  color: red;
+  font-weight: bold;
 }
 div.main_index div.Signup_form div.form_continer {
   width: 50%;
@@ -124,11 +130,16 @@ div.main_staff div.welcome_message {
 div.main_staff div.welcome_message a {
   text-decoration: none;
   color: #fff;
-  font-size: large;
+  font-weight: 900;
+  font-size: medium;
   background: rgba(35, 35, 37, 0.8235294118);
   width: 15%;
-  padding: 10px;
+  padding: 15px;
   border-radius: 10px;
+  text-align: center;
+}
+div.main_staff div.department_in h2 {
+  padding: 10px;
 }
 div.main_staff div.department_in ul li {
   list-style: none;
@@ -142,4 +153,15 @@ div.main_staff div.department_in ul div.enroll {
 }
 div.main_staff div.department_in ul div.enroll a {
   text-decoration: none;
+}
+
+div.content_mid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: darkgreen;
+  font-size: larger;
+  -moz-column-rule: rgba(35, 35, 37, 0.8235294118);
+       column-rule: rgba(35, 35, 37, 0.8235294118);
+  height: 80vh;
 }/*# sourceMappingURL=all.css.map */

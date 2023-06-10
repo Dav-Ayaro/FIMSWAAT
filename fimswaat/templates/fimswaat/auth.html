@@ -8,15 +8,16 @@
         <form action="{% url 'login_view'%}" method="post">
             {% csrf_token %}
             {{login_info.as_p}}
-            <div class="center_submit"><input type="submit" value="submit"></div>
+            <div class="center_submit"><input type="submit" value="submit" id="myButton"></div>
         </form>
     </div>
 
+    
     {% if wrong_login %}
-        {{wrong_login}}
+        <div class="wrong_login">{{wrong_login}}</div>
     {% endif %}
     {% if invalid_data %}
-        {{invalid_data}}
+        <div class="wrong_login"></div>{{invalid_data}}</div>
     {% endif %}
 
 </div>
