@@ -11,6 +11,8 @@ body {
 div.main_class {
   width: 100%;
   position: relative;
+  min-height: 100%;
+  height: auto;
 }
 div.main_class div.child1_class {
   display: flex;
@@ -45,11 +47,8 @@ div.main_class div.main_footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
-}
-div.main_class div.main_footer div.footer {
-  position: relative;
-  bottom: -10;
+  position: absolute;
+  bottom: 0;
 }
 div.main_class div.main_footer div.footer div.footer_content {
   color: white;
@@ -57,8 +56,10 @@ div.main_class div.main_footer div.footer div.footer_content {
 }
 
 div.main_index {
-  height: 80vh;
+  height: auto;
+  min-height: 90%;
   width: 100%;
+  position: absolute;
   display: flex;
   align-items: center;
   flex-direction: column;

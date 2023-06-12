@@ -10,6 +10,8 @@ body{
 div.main_class{
     width: 100%;
     position: relative;
+    min-height: 100%;
+    height: auto;
     div.child1_class{
         display: flex;
         background: rgb(94, 59, 59);
@@ -41,13 +43,13 @@ div.main_class{
         width: 100%;
         background: rgb(94, 59, 59);
         height: 10vh;
+        // height: max-content;
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index: 999;
+        position: absolute;
+        bottom: 0;
         div.footer{
-            position: relative;
-            bottom: -10;
             div.footer_content{
                 color: white;
                 font-size: large;
@@ -56,8 +58,10 @@ div.main_class{
     }
 }
 div.main_index{
-    height: 80vh;
+    height: auto;
+    min-height: 90%;
     width: 100%;
+    position: absolute;
     display: flex;
     align-items: center;
     flex-direction: column;
