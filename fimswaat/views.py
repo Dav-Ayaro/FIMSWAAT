@@ -16,6 +16,7 @@ from urllib.parse import urlencode
 from django.contrib.auth.hashers import make_password
 from django.db.models import Q
 import re
+from .models import Location, Product
 
 # Create your views here.
 
@@ -233,3 +234,22 @@ def changed_view(request):
 def logout_view(request):
     logout(request)
     return object.redirection_func(redirect_path= 'login_view')
+
+
+def location_list(request):
+    locations = Location.objects.all()
+    return render(request, 'location_list.html', {'locations': locations})
+
+def location_detail(request, location_id):
+    location = Location.objects.get(id=location_id)
+    return render(request, 'location_detail.html', {'location': location})
+
+
+
+def product_details(request, barcode):
+    product = Product.objects.get(barcode=barcode)
+    return render(request, 'product_details.html', {'product': product})
+
+def generate_report(request):
+    products = Product.objects.all()
+    return render(request, 'report.html', {'products': products})
