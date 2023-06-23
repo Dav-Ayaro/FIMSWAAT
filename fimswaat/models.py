@@ -31,6 +31,7 @@ class Registration(models.Model):
     user = models.ForeignKey(UserAccounts, on_delete=models.CASCADE)
     fullName = models.CharField(max_length=255)
     department = models.CharField(max_length=100)
-    empId = models.IntegerField()
+    officeName = models.CharField(max_length=255)
+    empId = models.CharField(max_length=15)
     officeName = models.CharField(max_length=255)
     officeCode = models.CharField(max_length=10)
