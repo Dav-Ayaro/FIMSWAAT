@@ -245,6 +245,22 @@ def location_detail(request, location_id):
     return render(request, 'location_detail.html', {'location': location})
 
 
+def location_table_view(request):
+    user = request.user
+    department = user.department
+
+    if department:
+        # Fetch location table entries based on the department
+        location_table_entries = Location.objects.filter(department=department)
+    else:
+        location_table_entries = []
+
+    context = {
+        'location_table_entries': location_table_entries
+    }
+
+    return render(request, 'location_table.html', context)
+
 
 def product_details(request, barcode):
     product = Product.objects.get(barcode=barcode)
@@ -253,3 +269,5 @@ def product_details(request, barcode):
 def generate_report(request):
     products = Product.objects.all()
     return render(request, 'report.html', {'products': products})
+
+

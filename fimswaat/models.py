@@ -23,9 +23,11 @@ class Department(models.Model):
 class UserAccounts(AbstractUser):
     email = models.EmailField(unique=True)
     user_id = models.UUIDField(default=uuid.uuid4, unique=True)
+    department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.username
+
 
 class Registration(models.Model):
     user = models.ForeignKey(UserAccounts, on_delete=models.CASCADE)

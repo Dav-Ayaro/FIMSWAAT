@@ -15,4 +15,5 @@ urlpatterns = [
     path('logout', logout_view, name='logout_view'),
     path('product/<str:barcode>/', views.product_details, name='product_details'),
     path('report/', views.generate_report, name='generate_report'),
+    path('location-table/', views.location_table_view, name='location_table'),
 ]
